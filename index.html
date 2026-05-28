@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uai Sô Itapagipe - Turismo e Entretenimento</title>
+    <style>
+        /* Estilos Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f6f0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        header {
+            background: linear-gradient(rgba(139, 0, 0, 0.85), rgba(139, 0, 0, 0.85)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* Navegação */
+        nav {
+            background-color: #d62828;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        nav a {
+            display: inline-block;
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #fcbf49;
+            color: #003049;
+        }
+
+        /* Conteúdo Principal */
+        .container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #8b0000;
+            border-bottom: 3px solid #fcbf49;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* Grid de Atrações */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #fdfaf6;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            color: #d62828;
+            margin-bottom: 10px;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #003049;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            nav a { padding: 10px 12px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Uai Sô Itapagipe!</h1>
+        <p>Descubra as belezas, o aconchego e a energia do Triângulo Mineiro</p>
+    </header>
+
+    <!-- Menu de Navegação -->
+    <nav>
+        <a href="#sobre">A Cidade</a>
+        <a href="#turismo">Turismo</a>
+        <a href="#eventos">Entretenimento</a>
+        <a href="#contato">Contato</a>
+    </nav>
+
+    <!-- Conteúdo -->
+    <div class="container">
+
+        <!-- Seção Sobre -->
+        <section id="sobre">
+            <h2>Sobre Itapagipe - MG</h2>
+            <p>Localizada no próspero Triângulo Mineiro, Itapagipe é uma cidade acolhedora, famosa por seu povo hospitaleiro, suas ricas tradições sertanejas e as belas paisagens naturais formadas pela proximidade com o Rio Grande. Aqui, a tranquilidade do interior se mistura com a energia de grandes festas!</p>
+        </section>
+
+        <!-- Seção Turismo -->
+        <section id="turismo">
+            <h2>Turismo e Lazer</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Rio Grande e Ranchos</h3>
+                        <p>Perfeito para quem busca descanso, pesca esportiva e esportes náuticos. Os ranchos na beira do rio são o refúgio ideal para os finais de semana em família.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Praças e Convivência</h3>
+                        <p>As praças da cidade são o ponto de encontro de todas as gerações. Lugar ideal para tomar um sorvete, bater um papo furado e curtir o final de tarde.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Culinária Mineira</h3>
+                        <p>Visitar Itapagipe e não provar do legítimo queijo mineiro, do pão de queijo quentinho ou daquela comidinha caseira feita no fogão a lenha é um pecado!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Eventos -->
+        <section id="eventos">
+            <h2>Entretenimento e Cultura</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Festa do Peão (EXPOITA)</h3>
+                        <p>O evento mais aguardado do ano! Atrai milhares de visitantes com grandes shows de artistas nacionais, montarias profissionais em touros e cavalos, e muita tradição sertaneja.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Festas Juninas e Cavalgadas</h3>
+                        <p>A cultura raiz se mantém viva através das tradicionais cavalgadas que reúnem comitivas de toda a região, além dos animados arraiás comunitários.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Contato/Sugestões -->
+        <section id="contato">
+            <h2>Divulgue seu Evento ou Comércio</h2>
+            <p>Tem um rancho para alugar, um restaurante ou quer divulgar um evento em Itapagipe? Entre em contato conosco para adicionarmos à página!</p>
+            <p style="margin-top: 15px; font-weight: bold; color: #d62828;">📧 email@seuportalitapagipe.com</p>
+        </section>
+
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Uai Sô Itapagipe - Guia de Turismo e Entretenimento Local.</p>
+    </footer>
+
+</body>
+</html>
