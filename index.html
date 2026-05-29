@@ -19,7 +19,8 @@
         .card-content { padding: 15px; }
         .card-img { width: 100%; height: 180px; object-fit: cover; }
         .patrocinios { background: #003049; color: white; padding: 40px 20px; margin-top: 40px; text-align: center; }
-        footer { background-color: #111; color: white; text-align: center; padding: 20px; }
+        footer { background-color: #111; color: #ccc; text-align: center; padding: 25px 20px; font-size: 0.9rem; border-top: 3px solid #d62828; }
+        footer a { color: #fcbf49; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -40,7 +41,12 @@
         <h2 style="color:#fcbf49; border-bottom:none; margin-bottom: 20px;">Nossos Patrocinadores e Parceiros</h2>
         <div class="grid" id="grid-patrocinios"></div>
     </div>
-    <footer><p>&copy; 2026 Uai Sô Itapagipe.</p></footer>
+    
+    <footer>
+        <p>&copy; 2026 Uai Sô Itapagipe - Guia de Turismo e Entretenimento Local.</p>
+        <p style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8;">Desenvolvido com ❤️ por <a href="#">Adolfo Queiroz</a></p>
+    </footer>
+
     <script>
         const FIREBASE_URL = "https://uai-so-itapagipe-default-rtdb.firebaseio.com/conteudo.json";
         function acessarSuporte(event) { event.preventDefault(); if(prompt("Senha:")==="admin123") location.href="dashboard.html"; }
