@@ -3,301 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uai Sô Itapagipe - Turismo e Entretenimento</title>
+    <title>Uai Sô Itapagipe!</title>
     <style>
-        /* Estilos Gerais */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f9f6f0;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Cabeçalho */
-        header {
-            background: linear-gradient(rgba(139, 0, 0, 0.85), rgba(139, 0, 0, 0.85)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            color: #fff;
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        header p {
-            font-size: 1.2rem;
-            font-style: italic;
-        }
-
-        /* Navegação */
-        nav {
-            background-color: #d62828;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            text-align: center;
-        }
-
-        nav a {
-            display: inline-block;
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        nav a:hover {
-            background-color: #fcbf49;
-            color: #003049;
-        }
-
-        /* Conteúdo Principal */
-        .container {
-            max-width: 1100px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        section {
-            background: white;
-            padding: 30px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        h2 {
-            color: #8b0000;
-            border-bottom: 3px solid #fcbf49;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
-        }
-
-        /* Grid de Atrações */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: #fdfaf6;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card-content {
-            padding: 15px;
-        }
-
-        .card-content h3 {
-            color: #d62828;
-            margin-bottom: 10px;
-        }
-        
-        .card-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-bottom: 1px solid #eee;
-        }
-
-        /* Rodapé */
-        footer {
-            background-color: #003049;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-
-        /* Responsividade */
-        @media (max-width: 600px) {
-            header h1 { font-size: 2rem; }
-            nav a { padding: 10px 12px; font-size: 0.9rem; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f9f6f0; color: #333; line-height: 1.6; }
+        header { background: linear-gradient(rgba(139, 0, 0, 0.85), rgba(139, 0, 0, 0.85)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover; color: #fff; text-align: center; padding: 60px 20px; }
+        nav { background-color: #d62828; position: sticky; top: 0; z-index: 1000; text-align: center; }
+        nav a { display: inline-block; color: white; padding: 14px 20px; text-decoration: none; font-weight: bold; }
+        nav a:hover { background-color: #fcbf49; color: #003049; }
+        .container { max-width: 1100px; margin: 20px auto; padding: 0 20px; }
+        section { background: white; padding: 30px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        h2 { color: #8b0000; border-bottom: 3px solid #fcbf49; padding-bottom: 5px; margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: #fdfaf6; border: 1px solid #eee; border-radius: 8px; overflow: hidden; }
+        .card-content { padding: 15px; }
+        .card-img { width: 100%; height: 180px; object-fit: cover; }
+        .patrocinios { background: #003049; color: white; padding: 40px 20px; margin-top: 40px; text-align: center; }
+        footer { background-color: #111; color: white; text-align: center; padding: 20px; }
     </style>
 </head>
 <body>
-
-    <!-- Cabeçalho -->
-    <header>
-        <h1>Uai Sô Itapagipe!</h1>
-        <p>Descubra as belezas, o aconchego e a energia do Triângulo Mineiro</p>
-    </header>
-
-    <!-- Menu de Navegação -->
+    <header><h1>Uai Sô Itapagipe!</h1><p>O Portal da nossa terra!</p></header>
     <nav>
-        <a href="#sobre">A Cidade</a>
-        <a href="#turismo">Turismo</a>
-        <a href="#eventos">Entretenimento</a>
-        <a href="#contato">Contato</a>
-        <!-- Botão Suporte Restrito com Senha -->
-        <a href="#" onclick="acessarSuporte(event)" style="background-color: #003049; color: #fcbf49; border-radius: 4px; margin-left: 10px;">🔒 Suporte</a>
+        <a href="#sobre">A Cidade</a><a href="#turismo">Turismo</a><a href="#eventos">Entretenimento</a><a href="#patrocinadores">Patrocinadores</a>
+        <a href="#" onclick="acessarSuporte(event)" style="background:#000; color:#fcbf49; border-radius:4px; margin-left:10px;">🔒 Dashboard</a>
     </nav>
-
-    <!-- Conteúdo -->
     <div class="container">
-
-        <!-- Seção Sobre -->
         <section id="sobre">
-            <h2>Sobre Itapagipe - MG</h2>
-            <p>Localizada no próspero Triângulo Mineiro, Itapagipe é uma cidade acolhedora, famosa por seu povo hospitaleiro, suas ricas tradições sertanejas e as belas paisagens naturais formadas pela proximidade com o Rio Grande. Aqui, a tranquilidade do interior se mistura com a energia de grandes festas!</p>
+            <h2 id="cidade-titulo">Sobre Itapagipe - MG</h2>
+            <p id="cidade-texto">Carregando história da cidade...</p>
         </section>
-
-        <!-- Seção Turismo -->
-        <section id="turismo">
-            <h2>Turismo e Lazer</h2>
-            <div class="grid" id="grid-turismo">
-                <!-- Conteúdo Inicial Padrão (Será substituído pelos dados que você cadastrar no Painel) -->
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Rio Grande e Ranchos</h3>
-                        <p>Perfeito para quem busca descanso, pesca esportiva e esportes náuticos. Os ranchos na beira do rio são o refúgio ideal para os finais de semana em família.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Praças e Convivência</h3>
-                        <p>As praças da cidade são o ponto de encontro de todas as generations. Lugar ideal para tomar um sorvete, bater um papo furado e curtir o final de tarde.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção Eventos -->
-        <section id="eventos">
-            <h2>Entretenimento e Cultura</h2>
-            <div class="grid" id="grid-eventos">
-                <!-- Conteúdo Inicial Padrão (Será substituído pelos dados que você cadastrar no Painel) -->
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Festa do Peão (EXPOITA)</h3>
-                        <p>O evento mais aguardado do ano! Atrai milhares de visitantes com grandes shows de artistas nacionais, montarias profissionais em touros e cavalos, e muita tradição sertaneja.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção Contato -->
-        <section id="contato">
-            <h2>Divulgue seu Evento ou Comércio</h2>
-            <p>Tem um rancho para alugar, um restaurante ou quer divulgar um evento em Itapagipe? Entre em contato conosco para adicionarmos à página!</p>
-            <p style="margin-top: 15px; font-weight: bold; color: #d62828;">📧 email@seuportalitapagipe.com</p>
-        </section>
-
+        <section id="turismo"><h2>Turismo e Lazer</h2><div class="grid" id="grid-turismo"></div></section>
+        <section id="eventos"><h2>Entretenimento</h2><div class="grid" id="grid-eventos"></div></section>
     </div>
-
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2026 Uai Sô Itapagipe - Guia de Turismo e Entretenimento Local.</p>
-    </footer>
-
-    <!-- Sistema Automático que conecta com o Banco de Dados Firebase e valida a senha -->
+    <div class="patrocinios" id="patrocinadores">
+        <h2 style="color:#fcbf49; border-bottom:none;">Nossos Patrocinadores e Parceiros</h2>
+        <div class="grid" id="grid-patrocinios"></div>
+    </div>
+    <footer><p>&copy; 2026 Uai Sô Itapagipe.</p></footer>
     <script>
-        // Link do seu banco de dados informado
-        const FIREBASE_URL = "https://uai-so-itapagipe-default-rtdb.firebaseio.com/";
-
-        // 1. Função que pede a senha ao clicar em "Suporte"
-        function acessarSuporte(event) {
-            event.preventDefault();
-            const senhaCorreta = "admin123"; // Defina sua senha aqui
-            const senhaDigitada = prompt("Digite a senha de suporte para acessar o Painel de Controle (Dashboard):");
-            
-            if (senhaDigitada === senhaCorreta) {
-                alert("Acesso autorizado! Redirecionando para o Dashboard...");
-                window.location.href = "dashboard.html";
-            } else if (senhaDigitada !== null) {
-                alert("Senha incorreta! Acesso negado.");
+        const FIREBASE_URL = "https://uai-so-itapagipe-default-rtdb.firebaseio.com/conteudo.json";
+        function acessarSuporte(event) { event.preventDefault(); if(prompt("Senha:")==="admin123") location.href="dashboard.html"; }
+        function getYT(url) { const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/; const match = url.match(regExp); return (match && match[2].length === 11) ? match[2] : null; }
+        async function carregar() {
+            const res = await fetch(FIREBASE_URL);
+            const dados = await res.json();
+            if(!dados) return;
+            const grids = { turismo: "", eventos: "", patrocinadores: "" };
+            let ultimaCidade = null;
+            for(let id in dados) {
+                const item = dados[id];
+                if(item.tipo === 'cidade') { ultimaCidade = item; continue; }
+                const midia = item.video ? `<iframe style="width:100%; height:180px; border:none;" src="https://www.youtube.com/embed/${getYT(item.video)}"></iframe>` : (item.imagem ? `<img src="${item.imagem}" class="card-img">` : "");
+                const html = `<div class="card">${midia}<div class="card-content"><h3>${item.titulo}</h3><p>${item.descricao}</p></div></div>`;
+                if(item.tipo === 'patrocinadores') grids.patrocinadores += html;
+                else if(item.tipo === 'eventos') grids.eventos += html;
+                else grids.turismo += html;
             }
+            if(ultimaCidade) { document.getElementById('cidade-titulo').innerText = ultimaCidade.titulo; document.getElementById('cidade-texto').innerText = ultimaCidade.descricao; }
+            document.getElementById('grid-turismo').innerHTML = grids.turismo;
+            document.getElementById('grid-eventos').innerHTML = grids.eventos;
+            document.getElementById('grid-patrocinios').innerHTML = grids.patrocinadores;
         }
-
-        // Extrai o ID do vídeo do YouTube para criar a caixinha do player
-        function extrairIDYouTube(url) {
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = url.match(regExp);
-            return (match && match[2].length === 11) ? match[2] : null;
-        }
-
-        // 2. Função automática que lê os textos, fotos e vídeos salvos no seu painel
-        async function buscarDadosDoPainel() {
-            try {
-                const response = await fetch(`${FIREBASE_URL}/conteudo.json`);
-                const dados = await response.json();
-
-                if (dados) {
-                    const gridTurismo = document.getElementById('grid-turismo');
-                    const gridEventos = document.getElementById('grid-eventos');
-
-                    let htmlTurismo = "";
-                    let htmlEventos = "";
-                    let temTurismo = false;
-                    let temEventos = false;
-
-                    for (let id in dados) {
-                        const item = dados[id];
-                        
-                        // Configura Mídia (prioriza vídeo do YouTube, se não houver, coloca a Imagem)
-                        let midiaHtml = "";
-                        if (item.video) {
-                            const videoId = extrairIDYouTube(item.video);
-                            if (videoId) {
-                                midiaHtml = `<iframe style="width:100%; height:180px; border:none;" src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>`;
-                            }
-                        } else if (item.imagem) {
-                            midiaHtml = `<img src="${item.imagem}" class="card-img" alt="${item.titulo}">`;
-                        }
-
-                        // Monta o quadradinho (card) com o título e a descrição criados no painel
-                        const cardHtml = `
-                            <div class="card">
-                                ${midiaHtml}
-                                <div class="card-content">
-                                    <h3>${item.titulo}</h3>
-                                    <p>${item.descricao}</p>
-                                </div>
-                            </div>
-                        `;
-
-                        // Distribui nas seções corretas de acordo com o que foi selecionado no Dashboard
-                        if (item.tipo === 'turismo' || item.tipo === 'gastronomia') {
-                            htmlTurismo += cardHtml;
-                            temTurismo = true;
-                        } else if (item.tipo === 'eventos') {
-                            htmlEventos += cardHtml;
-                            temEventos = true;
-                        }
-                    }
-
-                    // Aplica as mudanças visualmente na página de forma automática
-                    if (temTurismo) gridTurismo.innerHTML = htmlTurismo;
-                    if (temEventos) gridEventos.innerHTML = htmlEventos;
-                }
-            } catch (erro) {
-                console.error("Aviso: Não foi possível carregar os dados online do painel.", erro);
-            }
-        }
-
-        // Inicia a busca assim que a página abre
-        window.onload = buscarDadosDoPainel;
+        carregar();
     </script>
-
 </body>
 </html>

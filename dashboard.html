@@ -3,156 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador Uai Sô - Simples e Fácil</title>
+    <title>Painel Completo - Uai Sô Itapagipe</title>
     <style>
         :root { --primary: #8b0000; --secondary: #003049; --accent: #fcbf49; --bg: #f4f6f9; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body { background-color: var(--bg); display: flex; min-height: 100vh; }
-
-        /* Barra Lateral */
         .sidebar { width: 280px; background: var(--primary); color: white; padding: 25px; display: flex; flex-direction: column; }
         .sidebar h2 { font-size: 1.2rem; margin-bottom: 30px; text-align: center; border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
         .sidebar a { color: white; text-decoration: none; padding: 12px; border-radius: 8px; margin-bottom: 10px; transition: 0.3s; display: block; }
         .sidebar a:hover { background: rgba(255,255,255,0.2); }
-
-        /* Conteúdo */
         .main { flex: 1; padding: 40px; overflow-y: auto; }
         .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 30px; }
         h1 { color: var(--secondary); margin-bottom: 20px; }
-        
-        /* Formulário */
         .grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .form-group { margin-bottom: 15px; }
         label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
         input, textarea, select { width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; font-size: 1rem; outline: none; }
-        input:focus { border-color: var(--accent); }
         .btn-save { background: var(--secondary); color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; font-size: 1.1rem; }
         .btn-save:hover { background: var(--primary); }
-
-        /* Lista de Itens Existentes */
         .item-lista { display: flex; align-items: center; justify-content: space-between; padding: 15px; border-bottom: 1px solid #eee; }
-        .item-lista:last-child { border: none; }
-        .item-info h4 { color: var(--primary); }
         .btn-delete { background: #ff4d4d; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
-        .tag { font-size: 0.7rem; background: #eee; padding: 3px 8px; border-radius: 10px; text-transform: uppercase; }
+        .tag { font-size: 0.7rem; background: #eee; padding: 3px 8px; border-radius: 10px; text-transform: uppercase; margin-right: 10px; }
     </style>
 </head>
 <body>
-
     <div class="sidebar">
-        <h2>ADMINISTRAÇÃO</h2>
-        <a href="index.html">⬅️ Sair do Painel</a>
-        <p style="margin-top: auto; font-size: 0.8rem; opacity: 0.7;">Conectado a: Firebase Realtime</p>
+        <h2>GESTÃO UAI SÔ</h2>
+        <a href="index.html">⬅️ Ver Site Principal</a>
+        <p style="margin-top: auto; font-size: 0.8rem; opacity: 0.7;">Firebase Realtime Online</p>
     </div>
-
     <div class="main">
-        <h1>Painel de Controle Itapagipe</h1>
-
+        <h1>Dashboard Intuitivo</h1>
         <div class="card">
-            <h2 style="margin-bottom: 20px; color: var(--primary);">✨ Adicionar Novo Conteúdo</h2>
+            <h2 style="margin-bottom: 20px; color: var(--primary);">➕ Novo Conteúdo ou Patrocinador</h2>
             <form id="formConteudo">
                 <div class="grid-form">
                     <div class="form-group">
                         <label>Onde vai aparecer?</label>
                         <select id="tipo" required>
+                            <option value="cidade">Sobre a Cidade (Texto Principal)</option>
                             <option value="turismo">Turismo e Lazer</option>
                             <option value="eventos">Entretenimento e Cultura</option>
-                            <option value="gastronomia">Onde Comer (Gastronomia)</option>
+                            <option value="gastronomia">Onde Comer</option>
+                            <option value="patrocinadores">Patrocinadores / Parceiros</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Título (Nome do local/festa)</label>
-                        <input type="text" id="titulo" placeholder="Ex: Rancho do Sol" required>
+                        <label>Título / Nome da Empresa</label>
+                        <input type="text" id="titulo" placeholder="Ex: Prefeitura ou Restaurante X" required>
                     </div>
                 </div>
-
                 <div class="form-group">
-                    <label>Texto de Descrição</label>
-                    <textarea id="descricao" placeholder="Explique os detalhes aqui..." required></textarea>
+                    <label>Texto / Descrição (Para "Cidade", este será o texto da página)</label>
+                    <textarea id="descricao" placeholder="Escreva aqui..." required></textarea>
                 </div>
-
                 <div class="grid-form">
                     <div class="form-group">
-                        <label>Link da Foto (URL)</label>
-                        <input type="url" id="imagem" placeholder="https://linkdafoto.com/imagem.jpg">
+                        <label>Link da Imagem / Logo (URL)</label>
+                        <input type="url" id="imagem" placeholder="https://...">
                     </div>
                     <div class="form-group">
                         <label>Link de Vídeo (YouTube)</label>
-                        <input type="url" id="video" placeholder="https://youtube.com/watch?v=...">
+                        <input type="url" id="video" placeholder="https://youtube.com/...">
                     </div>
                 </div>
-
-                <button type="submit" class="btn-save">🚀 Publicar no Site Agora</button>
+                <button type="submit" class="btn-save">Publicar Agora</button>
             </form>
         </div>
-
         <div class="card">
-            <h2 style="margin-bottom: 20px; color: var(--secondary);">📋 Itens Publicados (Gerenciar)</h2>
-            <div id="listaItens">
-                <p>Carregando itens...</p>
-            </div>
+            <h2 style="margin-bottom: 20px; color: var(--secondary);">📋 Gerenciar o que já existe</h2>
+            <div id="listaItens"><p>Carregando...</p></div>
         </div>
     </div>
-
     <script>
         const API_URL = "https://uai-so-itapagipe-default-rtdb.firebaseio.com/conteudo";
-
-        // FUNÇÃO PARA SALVAR
         document.getElementById('formConteudo').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = e.target.querySelector('button');
-            btn.innerText = "Salvando...";
-
+            btn.innerText = "Publicando...";
             const novoItem = {
                 tipo: document.getElementById('tipo').value,
                 titulo: document.getElementById('titulo').value,
                 descricao: document.getElementById('descricao').value,
                 imagem: document.getElementById('imagem').value,
-                video: document.getElementById('video').value
+                video: document.getElementById('video').value,
+                data: Date.now()
             };
-
-            await fetch(`${API_URL}.json`, {
-                method: 'POST',
-                body: JSON.stringify(novoItem)
-            });
-
-            alert("Sucesso! O site foi atualizado.");
+            await fetch(`${API_URL}.json`, { method: 'POST', body: JSON.stringify(novoItem) });
+            alert("Site Atualizado com Sucesso!");
             location.reload();
         });
-
-        // FUNÇÃO PARA CARREGAR LISTA E EXCLUIR
         async function carregarLista() {
             const res = await fetch(`${API_URL}.json`);
             const dados = await res.json();
             const container = document.getElementById('listaItens');
             container.innerHTML = "";
-
-            if(!dados) {
-                container.innerHTML = "<p>Nenhum item cadastrado.</p>";
-                return;
-            }
-
+            if(!dados) { container.innerHTML = "<p>Nenhum item.</p>"; return; }
             for (let id in dados) {
                 const item = dados[id];
-                container.innerHTML += `
-                    <div class="item-lista">
-                        <div class="item-info">
-                            <span class="tag">${item.tipo}</span>
-                            <h4>${item.titulo}</h4>
-                        </div>
-                        <button class="btn-delete" onclick="excluirItem('${id}')">Excluir</button>
-                    </div>
-                `;
+                container.innerHTML += `<div class="item-lista"><div><span class="tag">${item.tipo}</span><strong>${item.titulo}</strong></div><button class="btn-delete" onclick="excluirItem('${id}')">Excluir</button></div>`;
             }
         }
-
         async function excluirItem(id) {
-            if(confirm("Tem certeza que deseja apagar este item do site?")) {
+            if(confirm("Deseja apagar?")) {
                 await fetch(`${API_URL}/${id}.json`, { method: 'DELETE' });
                 location.reload();
             }
         }
-
         carregarLista();
     </script>
 </body>
