@@ -122,14 +122,37 @@
             return (match && match[2].length === 11) ? match[2] : null;
         }
 
+        function getTikTok(url) {
+            if (!url || !/tiktok\.com/i.test(url)) return null;
+            const match = url.match(/\/video\/(\d+)/);
+            return match ? match[1] : null;
+        }
+
+        function getInstagramEmbed(url) {
+            if (!url || !/instagram\.com/i.test(url)) return null;
+            const match = url.match(/instagram\.com\/(p|reel|tv)\/([^/?#]+)/i);
+            return match ? `https://www.instagram.com/${match[1]}/${match[2]}/embed` : null;
+        }
+
+        function getFacebookEmbed(url) {
+            if (!url || !/(facebook\.com|fb\.watch)/i.test(url)) return null;
+            return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&width=560`;
+        }
+
         function escapeHTML(valor) {
             return String(valor || '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char]));
         }
 
         function cardMidia(item) {
             const videoId = getYT(item.video || '');
+            const tiktokId = getTikTok(item.video || '');
+            const instagramEmbed = getInstagramEmbed(item.video || '');
+            const facebookEmbed = getFacebookEmbed(item.video || '');
             if (item.videoLocal) return `<video class="local-video" src="${escapeHTML(item.videoLocal)}" controls preload="metadata" title="Vídeo de ${escapeHTML(item.titulo || 'conteúdo')}"></video>`;
             if (videoId) return `<iframe class="video-frame" src="https://www.youtube.com/embed/${videoId}" title="Vídeo de ${escapeHTML(item.titulo || 'conteúdo')}" allowfullscreen></iframe>`;
+            if (tiktokId) return `<iframe class="video-frame" src="https://www.tiktok.com/embed/v2/${tiktokId}" title="TikTok de ${escapeHTML(item.titulo || 'conteúdo')}" allowfullscreen></iframe>`;
+            if (instagramEmbed) return `<iframe class="video-frame" src="${escapeHTML(instagramEmbed)}" title="Instagram de ${escapeHTML(item.titulo || 'conteúdo')}" allowfullscreen></iframe>`;
+            if (facebookEmbed) return `<iframe class="video-frame" src="${escapeHTML(facebookEmbed)}" title="Facebook de ${escapeHTML(item.titulo || 'conteúdo')}" allowfullscreen></iframe>`;
             if (item.imagem) return `<img src="${escapeHTML(item.imagem)}" class="card-img" alt="${escapeHTML(item.titulo || 'Imagem do conteúdo')}">`;
             return '';
         }
