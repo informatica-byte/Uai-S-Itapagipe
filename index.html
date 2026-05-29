@@ -3,56 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uai Só Itapagipe!</title>
+    <title>Uai Sô Itapagipe!</title>
     <style>
         :root {
-            --primary: #8b0000;
-            --secondary: #003049;
-            --accent: #fcbf49;
+            --primary: #9d1d20;
+            --secondary: #064663;
+            --accent: #ffb703;
+            --sun: #fb8500;
+            --leaf: #2a9d8f;
+            --sky: #e0f4ff;
             --danger: #d62828;
             --paper: #fffaf3;
-            --text: #333;
+            --text: #2d2d2d;
             --muted: #667085;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background-color: #f9f6f0; color: var(--text); line-height: 1.6; }
-        header { background: linear-gradient(rgba(139, 0, 0, 0.86), rgba(139, 0, 0, 0.86)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover; color: #fff; text-align: center; padding: 64px 20px; }
-        header h1 { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.1; }
-        header p { margin-top: 10px; font-size: 1.15rem; }
-        nav { background-color: var(--danger); position: sticky; top: 0; z-index: 1000; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.12); }
-        nav a { display: inline-block; color: white; padding: 14px 16px; text-decoration: none; font-weight: 700; }
-        nav a:hover, nav a:focus { background-color: var(--accent); color: var(--secondary); outline: none; }
+        body { background: linear-gradient(180deg, #fff7e8 0%, #f1fbff 42%, #fffaf3 100%); color: var(--text); line-height: 1.6; }
+        header { position: relative; overflow: hidden; background: linear-gradient(115deg, rgba(157, 29, 32, 0.62), rgba(251, 133, 0, 0.38)), url('dsc2262.jpg') no-repeat center center/cover; color: #fff; text-align: center; padding: 82px 20px 96px; }
+        header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 48px; background: linear-gradient(135deg, transparent 33%, #fff7e8 34%), linear-gradient(225deg, transparent 33%, #fff7e8 34%); background-size: 56px 48px; background-position: 0 0, 28px 0; }
+        .hero-content { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
+        .hero-badge { display: inline-block; margin-bottom: 16px; padding: 7px 14px; border-radius: 999px; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.45); font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; font-size: 0.78rem; }
+        header h1 { font-size: clamp(2.35rem, 7vw, 4.6rem); line-height: 1.05; text-shadow: 0 4px 18px rgba(0,0,0,0.25); }
+        header p { margin: 14px auto 0; font-size: clamp(1.05rem, 2.5vw, 1.35rem); max-width: 620px; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 26px; }
+        .hero-actions a { color: var(--secondary); background: var(--accent); text-decoration: none; font-weight: 800; padding: 12px 18px; border-radius: 999px; box-shadow: 0 8px 18px rgba(0,0,0,0.22); }
+        .hero-actions a.secondary { color: #fff; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.5); }
+        nav { background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.08); padding: 8px; }
+        nav a { display: inline-block; color: var(--secondary); padding: 10px 14px; margin: 3px; border-radius: 999px; text-decoration: none; font-weight: 800; }
+        nav a:hover, nav a:focus { background-color: var(--accent); color: var(--secondary); outline: none; transform: translateY(-1px); }
         .admin-link { color: #777; font-size: 0.75rem; font-weight: 400; opacity: 0.65; }
         .admin-link:hover, .admin-link:focus { color: var(--accent); opacity: 1; outline: none; }
-        .container { max-width: 1100px; margin: 20px auto; padding: 0 20px; }
-        section { background: white; padding: 30px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        h2 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 5px; margin-bottom: 20px; line-height: 1.25; }
+        .container { max-width: 1120px; margin: 24px auto; padding: 0 20px; }
+        section { background: rgba(255,255,255,0.92); padding: 30px; margin-bottom: 22px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,48,73,0.08); border: 1px solid rgba(6,70,99,0.08); }
+        h2 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 7px; margin-bottom: 20px; line-height: 1.25; }
+        .section-kicker { color: var(--leaf); font-weight: 800; text-transform: uppercase; font-size: 0.78rem; letter-spacing: 0.04em; margin-bottom: 4px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-        .card { background: var(--paper); border: 1px solid #eee; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; min-height: 100%; }
+        .card { background: var(--paper); border: 1px solid #ffe2a8; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; min-height: 100%; box-shadow: 0 8px 22px rgba(0,0,0,0.06); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(0,48,73,0.12); }
         .card-content { padding: 16px; }
         .card-content h3 { color: var(--secondary); margin-bottom: 8px; line-height: 1.25; overflow-wrap: anywhere; }
         .card-content p { overflow-wrap: anywhere; }
-        .card-img, .video-frame { width: 100%; height: 180px; object-fit: cover; border: none; background: #eee; }
+        .card-img, .video-frame { width: 100%; height: 190px; object-fit: cover; border: none; background: #eee; }
         .empty { color: var(--muted); font-style: italic; }
-        .patrocinios { background: var(--secondary); color: white; padding: 40px 20px; margin-top: 40px; text-align: center; }
+        .patrocinios { background: linear-gradient(135deg, var(--secondary), #0a7c86); color: white; padding: 46px 20px; margin-top: 40px; text-align: center; }
         .patrocinios .grid { max-width: 1100px; margin: 0 auto; }
         .patrocinios .card { color: var(--text); text-align: left; }
         footer { background-color: #111; color: #ccc; text-align: center; padding: 25px 20px; font-size: 0.9rem; border-top: 3px solid var(--danger); }
         footer a { color: var(--accent); text-decoration: none; font-weight: 700; }
         @media (max-width: 760px) {
             header { padding: 48px 16px; }
-            nav { position: static; padding: 6px; }
-            nav a { display: block; padding: 11px 12px; border-radius: 4px; }
+            nav { position: static; padding: 8px; }
+            nav a { display: block; padding: 11px 12px; border-radius: 999px; }
             .container { padding: 0 14px; }
             section { padding: 22px 18px; }
             .grid { grid-template-columns: 1fr; }
+            .hero-actions a { width: 100%; max-width: 280px; }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Uai Só Itapagipe!</h1>
-        <p>O portal da nossa terra!</p>
+        <div class="hero-content">
+            <span class="hero-badge">Turismo, cultura e bons encontros</span>
+            <h1>Uai Sô Itapagipe!</h1>
+            <p>O portal da nossa terra, com passeios, sabores, eventos e histórias para aproveitar melhor a cidade.</p>
+            <div class="hero-actions">
+                <a href="#turismo">Explorar passeios</a>
+                <a href="#eventos" class="secondary">Ver entretenimento</a>
+            </div>
+        </div>
     </header>
     <nav>
         <a href="#sobre">A Cidade</a>
@@ -63,18 +82,22 @@
     </nav>
     <div class="container">
         <section id="sobre">
+            <p class="section-kicker">Conheça a cidade</p>
             <h2 id="cidade-titulo">Sobre Itapagipe - MG</h2>
             <p id="cidade-texto">Carregando história da cidade...</p>
         </section>
         <section id="turismo">
+            <p class="section-kicker">Para visitar</p>
             <h2>Turismo e Lazer</h2>
             <div class="grid" id="grid-turismo"><p class="empty">Carregando...</p></div>
         </section>
         <section id="eventos">
+            <p class="section-kicker">Agenda e diversão</p>
             <h2>Entretenimento</h2>
             <div class="grid" id="grid-eventos"><p class="empty">Carregando...</p></div>
         </section>
         <section id="gastronomia">
+            <p class="section-kicker">Sabores locais</p>
             <h2>Onde Comer</h2>
             <div class="grid" id="grid-gastronomia"><p class="empty">Carregando...</p></div>
         </section>
@@ -84,7 +107,7 @@
         <div class="grid" id="grid-patrocinios"><p class="empty">Carregando...</p></div>
     </div>
     <footer>
-        <p>&copy; 2026 Uai Só Itapagipe - Guia de Turismo e Entretenimento Local.</p>
+        <p>&copy; 2026 Uai Sô Itapagipe - Guia de Turismo e Entretenimento Local.</p>
         <p style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8;">Desenvolvido por <a href="#">Adolfo Queiroz</a></p>
         <p style="margin-top: 10px;"><a href="dashboard.html" class="admin-link">Área restrita</a></p>
     </footer>
