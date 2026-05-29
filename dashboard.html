@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Avançado - Uai Só Itapagipe</title>
+    <title>Painel Avançado - Uai Sô Itapagipe</title>
     <style>
         :root {
             --primary: #8b0000;
@@ -51,7 +51,8 @@
         .btn-delete { background: var(--danger); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: 700; }
         .btn-edit:hover, .btn-delete:hover { filter: brightness(0.95); }
         .tag { display: inline-block; font-size: 0.7rem; background: #eef2f7; color: var(--secondary); padding: 3px 8px; border-radius: 999px; text-transform: uppercase; margin-right: 10px; font-weight: 700; }
-        .preview-img { max-height: 90px; max-width: 160px; display: block; margin-top: 10px; border-radius: 4px; object-fit: cover; border: 1px solid var(--border); }
+        .preview-img, .preview-video { max-height: 120px; max-width: 220px; display: block; margin-top: 10px; border-radius: 4px; object-fit: cover; border: 1px solid var(--border); background: #111; }
+        .btn-clear { background: #eef2f7; color: var(--secondary); border: 1px solid var(--border); padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: 700; margin-top: 8px; }
         .status-msg { margin-top: 12px; min-height: 22px; font-weight: 700; color: var(--muted); }
         .status-msg.sucesso { color: #16703a; }
         .status-msg.erro { color: var(--danger); }
@@ -92,7 +93,7 @@
 
     <div id="app-view" class="wrapper hidden">
         <aside class="sidebar">
-            <h2>GESTÃO UAI SÓ</h2>
+            <h2>GESTÃO UAI SÔ</h2>
             <a href="index.html">Voltar para o site principal</a>
             <button type="button" id="btn-logout">Sair do painel</button>
             <p class="sidebar-status">Conectado como <span id="usuario-logado"></span></p>
@@ -104,6 +105,7 @@
                 <form id="formConteudo">
                     <input type="hidden" id="edit-id">
                     <input type="hidden" id="imagem-base64">
+                    <input type="hidden" id="video-local-base64">
                     <div class="grid-form">
                         <div class="form-group">
                             <label for="tipo">Onde vai aparecer?</label>
@@ -134,6 +136,12 @@
                             <label for="video">Link de vídeo do YouTube (opcional)</label>
                             <input type="url" id="video" placeholder="https://youtube.com/...">
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="arquivo-video">Enviar vídeo local (opcional)</label>
+                        <input type="file" id="arquivo-video" accept="video/mp4,video/webm,video/ogg,video/*">
+                        <video id="preview-video" class="preview-video" controls style="display:none;"></video>
+                        <button type="button" id="btn-remover-video" class="btn-clear" style="display:none;">Remover vídeo local</button>
                     </div>
                     <button type="submit" id="btn-submit" class="btn-save">Publicar agora</button>
                     <button type="button" id="btn-cancelar" class="btn-delete" style="display:none; margin-top:10px; width:100%;">Cancelar edição</button>
@@ -175,6 +183,7 @@
         const form = document.getElementById('formConteudo');
         const statusForm = document.getElementById('status-form');
         const btnSubmit = document.getElementById('btn-submit');
+        const LIMITE_VIDEO_MB = 20;
 
         function escapeHTML(valor) {
             return String(valor || '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char]));
@@ -337,6 +346,41 @@
             reader.readAsDataURL(file);
         });
 
+        document.getElementById('arquivo-video').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            if (!file.type.startsWith('video/')) {
+                mostrarStatus('Escolha um arquivo de vídeo válido.', 'erro');
+                e.target.value = '';
+                return;
+            }
+            if (file.size > LIMITE_VIDEO_MB * 1024 * 1024) {
+                mostrarStatus(`O vídeo precisa ter até ${LIMITE_VIDEO_MB} MB para salvar no Firebase.`, 'erro');
+                e.target.value = '';
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                document.getElementById('video-local-base64').value = event.target.result;
+                const previewVideo = document.getElementById('preview-video');
+                previewVideo.src = event.target.result;
+                previewVideo.style.display = 'block';
+                document.getElementById('btn-remover-video').style.display = 'inline-block';
+                mostrarStatus('Vídeo local carregado. Ao publicar, ele terá prioridade sobre o link do YouTube.');
+            };
+            reader.readAsDataURL(file);
+        });
+
+        document.getElementById('btn-remover-video').addEventListener('click', () => {
+            document.getElementById('arquivo-video').value = '';
+            document.getElementById('video-local-base64').value = '';
+            const previewVideo = document.getElementById('preview-video');
+            previewVideo.removeAttribute('src');
+            previewVideo.style.display = 'none';
+            document.getElementById('btn-remover-video').style.display = 'none';
+            mostrarStatus('Vídeo local removido.');
+        });
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const idEditando = document.getElementById('edit-id').value;
@@ -349,6 +393,7 @@
                 descricao: document.getElementById('descricao').value.trim(),
                 imagem: document.getElementById('imagem-base64').value,
                 video: document.getElementById('video').value.trim(),
+                videoLocal: document.getElementById('video-local-base64').value,
                 data: Date.now()
             };
 
@@ -419,12 +464,23 @@
             document.getElementById('descricao').value = item.descricao || '';
             document.getElementById('imagem-base64').value = item.imagem || '';
             document.getElementById('video').value = item.video || '';
+            document.getElementById('video-local-base64').value = item.videoLocal || '';
             const preview = document.getElementById('preview');
             if (item.imagem) {
                 preview.src = item.imagem;
                 preview.style.display = 'block';
             } else {
                 preview.style.display = 'none';
+            }
+            const previewVideo = document.getElementById('preview-video');
+            if (item.videoLocal) {
+                previewVideo.src = item.videoLocal;
+                previewVideo.style.display = 'block';
+                document.getElementById('btn-remover-video').style.display = 'inline-block';
+            } else {
+                previewVideo.removeAttribute('src');
+                previewVideo.style.display = 'none';
+                document.getElementById('btn-remover-video').style.display = 'none';
             }
             document.getElementById('form-titulo').innerText = 'Editando conteúdo';
             btnSubmit.innerText = 'Salvar alterações';
@@ -437,7 +493,12 @@
             form.reset();
             document.getElementById('edit-id').value = '';
             document.getElementById('imagem-base64').value = '';
+            document.getElementById('video-local-base64').value = '';
             document.getElementById('preview').style.display = 'none';
+            const previewVideo = document.getElementById('preview-video');
+            previewVideo.removeAttribute('src');
+            previewVideo.style.display = 'none';
+            document.getElementById('btn-remover-video').style.display = 'none';
             document.getElementById('form-titulo').innerText = 'Novo conteúdo ou patrocinador';
             btnSubmit.innerText = 'Publicar agora';
             document.getElementById('btn-cancelar').style.display = 'none';

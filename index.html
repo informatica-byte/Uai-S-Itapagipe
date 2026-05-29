@@ -43,7 +43,7 @@
         .card-content { padding: 16px; }
         .card-content h3 { color: var(--secondary); margin-bottom: 8px; line-height: 1.25; overflow-wrap: anywhere; }
         .card-content p { overflow-wrap: anywhere; }
-        .card-img, .video-frame { width: 100%; height: 190px; object-fit: cover; border: none; background: #eee; }
+        .card-img, .video-frame, .local-video { width: 100%; height: 190px; object-fit: cover; border: none; background: #111; }
         .empty { color: var(--muted); font-style: italic; }
         .patrocinios { background: linear-gradient(135deg, var(--secondary), #0a7c86); color: white; padding: 46px 20px; margin-top: 40px; text-align: center; }
         .patrocinios .grid { max-width: 1100px; margin: 0 auto; }
@@ -128,8 +128,9 @@
 
         function cardMidia(item) {
             const videoId = getYT(item.video || '');
+            if (item.videoLocal) return `<video class="local-video" src="${escapeHTML(item.videoLocal)}" controls preload="metadata" title="Vídeo de ${escapeHTML(item.titulo || 'conteúdo')}"></video>`;
             if (videoId) return `<iframe class="video-frame" src="https://www.youtube.com/embed/${videoId}" title="Vídeo de ${escapeHTML(item.titulo || 'conteúdo')}" allowfullscreen></iframe>`;
-            if (item.imagem) return `<img src="${item.imagem}" class="card-img" alt="${escapeHTML(item.titulo || 'Imagem do conteúdo')}">`;
+            if (item.imagem) return `<img src="${escapeHTML(item.imagem)}" class="card-img" alt="${escapeHTML(item.titulo || 'Imagem do conteúdo')}">`;
             return '';
         }
 
